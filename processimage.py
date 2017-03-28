@@ -26,18 +26,19 @@ from imtools import pca
 
 
 def sobelFilter(img):
-  imgsobel = filters.sobel(img)
-  return imgsobel
-#  imgray = img # maybe convert to grayscale first?
-#  imx = zeros(imgray.shape)
-#  filters.sobel(imgray,1,imx)
-#  imy = zeros(imgray.shape)
-#  filters.sobel(imgray,0,imy)
-#  magnitude = sqrt(imx**2+imy**2)
-#  return magnitude.astype(int)
+#  imgsobel = filters.sobel(img)
+#  return imgsobel
+  imgray = img # maybe convert to grayscale first?
+  imx = zeros(imgray.shape)
+  filters.sobel(imgray,1,imx)
+  imy = zeros(imgray.shape)
+  filters.sobel(imgray,0,imy)
+  magnitude = sqrt(imx**2+imy**2)
+  return magnitude.astype(int)
 # enddef
 
-
+# attempt to detect corners
+# so far, it fails
 def sobelCorners(img):
 
   imgray = img # maybe convert to grayscale first?

@@ -20,7 +20,7 @@ from os.path import isfile, join
 import processimage
 
 
-
+# adapted from: https://www.kaggle.com/narae78/the-nature-conservancy-fisheries-monitoring/fish-detection/notebook
 def matchTemplateAllMethods(img,template):
   img2 = img.copy()
   w, h = template.shape[::-1]
@@ -123,7 +123,7 @@ imgcropname = imgfoldercrop + '\\' +templatefilenames[2]
 #plt.subplot(121),plt.imshow(template, cmap='gray') 
 #plt.subplot(122), plt.imshow(im_array, cmap='gray')
 
-processingFilter = 'sobel'
+processingFilter = 'gausian difference'
 
 for templatefilename in templatefilenames:
   imgtemplatepath = imgfoldercrop + '\\' +templatefilename
@@ -141,12 +141,15 @@ for templatefilename in templatefilenames:
   # endfor
 # endfor
     
+
+
+################################################
   
 
 imgtemplatepath = imgfoldercrop + '\\' +templatefilenames[0]
 imgtemplate = cv2.imread(imgtemplatepath,0)
 imgsobel = processimage.sobelFilter(imgtemplate)#.astype(int)
-
+plt.imshow(imgsobel,cmap='gray')
 
 plt.imshow(imgtemplate)
 plt.imshow(processimage.sobelFilter(imgtemplate), cmap='gray')
